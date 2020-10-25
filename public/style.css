@@ -54,18 +54,18 @@ h1 {
 
 #result .result-album, #result .result-artist {
   opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.5s;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 
 #result .result-album, #result .result-image-container {
   opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.75s;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.75s;
 }
 
 .result-album {
@@ -173,22 +173,22 @@ h1 {
 /* Button transition */
 
 #reload-button {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.7s;
+ opacity: 1;
+ animation-name: fadeInOpacity;
+ animation-iteration-count: 1;
+ animation-timing-function: ease-in;
+ animation-duration: 0.7s;
   font-family: var(--font);
   margin-top: calc(0 * var(--padding));
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+ 0% {
+  opacity: 0;
+ }
+ 100% {
+  opacity: 1;
+ }
 }
 
 /* Placeholder stuff */
