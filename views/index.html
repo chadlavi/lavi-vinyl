@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A random vinyl record chooser" />
+    <title>What to listen to? 🤔</title>
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Let's put on...</h1>
+      </header>
+      <article>
+        <div id="placeholder">
+          <div class="result-image-container">
+            <div class="placeholder-container">
+              <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="album"></div>
+        <button id="reload-button" onclick="newAlbum();">
+          Nah, something else
+        </button>
+      </article>
+    </main>
+  </body>
+</html>

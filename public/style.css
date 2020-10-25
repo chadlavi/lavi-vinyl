@@ -1,0 +1,214 @@
+:root {
+  --background: linear-gradient(#faefff, #dec9e4);
+  --text: #351e49;
+  --button: #612c73;
+  --button-text: white;
+  --padding: 1rem;
+  --font: system-ui, sans-serif;
+
+  font-family: var(--font);
+  line-height: 1.5em;
+  font-size: 14pt;
+  
+  font-variant: common-ligatures;
+  color: var(--text);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: linear-gradient(#2f2532, #222);
+    --text: #fcf7ff;
+    --button: #4b2e4e;
+    --button-text: #fcf7ff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  background-attachment: fixed;
+}
+
+main {
+  margin: var(--padding) auto;
+  width: 600px;
+  max-width: calc(100% - calc(2 * var(--padding)));
+  margin-bottom: 64px;
+}
+
+@media (max-width: 600px) {
+  main {
+    margin: 0 auto;  
+    max-width: calc(100% - calc(0.5 * var(--padding)));
+  }
+}
+
+h1 {
+  font-weight: 900;
+}
+
+.result-album {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.result-artist {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-image-container {
+  position: relative;
+  height: 0;
+  padding-top: 100%;
+}
+
+.result-image-container > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#reload-button {
+  display: none;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  color: var(--button-text);
+  background: var(--button);
+  border: none;
+  margin: 0;
+  padding: var(--padding);
+  width: 100%;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+#reload-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--button-text) inset;
+}
+
+#reload-button.show {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  #reload-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+/* don't show the large image when screen is <= 375px wide */
+
+@media (max-width: 375px) {
+  .lg-image {
+    display: none;
+  }
+}
+
+/* Button transition */
+
+#reload-button {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.7s;
+  font-family: var(--font);
+  margin-top: calc(0 * var(--padding));
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Placeholder stuff */
+
+.placeholder-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  opacity: 25%;
+  /* this accommodates the space where the text would go */
+  margin-top: 56px;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.hide {
+  display: none;
+}
