@@ -30,20 +30,22 @@ const showReloadButton = () => {
   }, 1000);
 };
 
-const formatResult = album => {
-  const { fields } = album;
-  return `"${fields["Album name"]}" by${fields.Artist}`;
-};
-
 const insertResult = album => {
-  const albumName = album.fields["Album name"];
+  const {
+    Artist: artistName = "(Unknown)",
+    "Album name": albumName = "(Unknown)",
+    Rating: rating,
+    Image: image
+  } = album.fields;
+
+  const { url: imageUrl, thumbnails } = image[0];
+
   const name = document.createElement("div");
-  name.innerText = albumName || "Unknown";
+  name.innerText = albumName;
   name.className = "result-text result-album";
 
-  const artistName = album.fields.Artist;
   const artist = document.createElement("div");
-  artist.innerText = artistName || "Unknown";
+  artist.innerText = artistName;
   artist.className = "result-text result-artist";
 
   const imgContainer = document.createElement("div");
@@ -53,19 +55,19 @@ const insertResult = album => {
   imageBox.className = "image-box";
   imgContainer.append(imageBox);
 
-  const imageUrl = album.fields.Image[0].url;
+  const altText = `photo of our copy of "${albumName}" by ${artistName}`;
 
   const img = document.createElement("img");
   img.src = imageUrl;
   img.className = "result-image lg-image";
-  img.alt = `photo of "${albumName}" by ${artistName}`;
+  img.alt = altText;
 
   if (imageUrl) {
-    const thumbUrl = album.fields.Image[0].thumbnails.large.url;
+    const thumbUrl = thumbnails.large.url;
     const thumb = document.createElement("img");
     thumb.src = thumbUrl;
     thumb.className = "result-image sm-image";
-    thumb.alt = `photo of "${albumName}" by ${artistName}`;
+    thumb.alt = altText;
 
     img.style.background = `url(${thumbUrl})`;
     img.style["background-size"] = "cover";
@@ -73,6 +75,25 @@ const insertResult = album => {
     imageBox.appendChild(thumb);
   }
   imageBox.appendChild(img);
+
+  if (rating) {
+    const ratingsBox = document.createElement("div");
+    ratingsBox.className = "ratings";
+
+    const starBox = document.createElement("span");
+
+    const ratingsText = `rating: ${rating}/5`;
+    starBox.className = "stars";
+    for (let i = 0; i < rating; i++) {
+      starBox.append("★");
+    }
+    starBox["aria-label"] = ratingsText;
+    starBox.title = ratingsText;
+
+    ratingsBox.append(starBox);
+
+    imageBox.appendChild(ratingsBox);
+  }
 
   const result = document.createElement("div");
   result.id = "result";
