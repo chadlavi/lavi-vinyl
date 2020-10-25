@@ -10,8 +10,8 @@
   font-family: var(--font);
   line-height: 1.5em;
   font-size: 14pt;
-  
-  font-variant: common-ligatures;
+  text-rendering: optimizeLegibility;
+
   color: var(--text);
 }
 
@@ -53,7 +53,6 @@ h1 {
 }
 
 #result .result-album, #result .result-artist {
-  opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
@@ -61,7 +60,6 @@ h1 {
 }
 
 #result .result-album, #result .result-image-container {
-  opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
@@ -70,7 +68,7 @@ h1 {
 
 .result-album {
   font-size: 1.25em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .result-artist {
