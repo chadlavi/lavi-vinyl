@@ -120,3 +120,50 @@ const newAlbum = async () => {
 loadAlbum().then(() => {
   showReloadButton();
 });
+
+console.log(
+  `%c                  _,.,
+                ,'   ,'
+               /   ,'
+              /   ,
+             /   ,
+            /   '
+           /   ,'
+           '.__|
+            |  |
+            |__|              ;
+            |  |              ;;
+            |__|              ;';.
+            |  |              ;  ;;
+            |__|              ;   ;;
+            |  |              ;    ;;
+            |__|              ;    ;;
+            |, |              ;   ;'
+            |--|              ;  '
+            |__|         ,;;;,;
+            |  |         ;;;;;;
+            |--|        \`;;;;'
+            |__|
+            |__|        ,-.
+            |__|'     ,'  /
+       _,.-'     ',_,' o /
+      /     8888        /
+      |                /
+       1              /
+       \`L   8888     /
+        |           /
+       /    ====    \\
+      /     ____     \\
+     /     (____)  o  \\
+    /             o    \\
+   /             o     ,'
+  /               _,.'^
+ /        __,.-"~^
+',,..--~~^
+
+RADICAL, DUDE.
+
+Thanks for taking a peek in the console!
+You can check out the code for this app at https://github.com/chadlavi/lavi-vinyl.`,
+  "font-family:monospace"
+);
