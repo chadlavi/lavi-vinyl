@@ -1,5 +1,3 @@
-const resultContainer = document.getElementById("album");
-
 const placeholder = document.getElementById("placeholder");
 
 const reinsert = e => {
@@ -31,14 +29,9 @@ const showReloadButton = () => {
 };
 
 const insertResult = album => {
-  const {
-    Artist: artistName = "(Unknown)",
-    "Album name": albumName = "(Unknown)",
-    Rating: rating,
-    Image: image
-  } = album.fields;
+  const { artistName, albumName, rating, image, imageUrl, thumbUrl } = album;
 
-  const { url: imageUrl, thumbnails } = image[0];
+  const resultContainer = document.getElementById("album");
 
   const name = document.createElement("div");
   name.innerText = albumName;
@@ -53,7 +46,7 @@ const insertResult = album => {
 
   const imageBox = document.createElement("div");
   imageBox.className = "image-box";
-  imgContainer.append(imageBox);
+  imgContainer.appendChild(imageBox);
 
   const altText = `photo of our copy of "${albumName}" by ${artistName}`;
 
@@ -63,7 +56,6 @@ const insertResult = album => {
   img.alt = altText;
 
   if (imageUrl) {
-    const thumbUrl = thumbnails.large.url;
     const thumb = document.createElement("img");
     thumb.src = thumbUrl;
     thumb.className = "result-image sm-image";
@@ -85,12 +77,12 @@ const insertResult = album => {
     const ratingsText = `rating: ${rating}/5`;
     starBox.className = "stars";
     for (let i = 0; i < rating; i++) {
-      starBox.append("★");
+      starBox.appendChild("★");
     }
     starBox["aria-label"] = ratingsText;
     starBox.title = ratingsText;
 
-    ratingsBox.append(starBox);
+    ratingsBox.appendChild(starBox);
 
     imageBox.appendChild(ratingsBox);
   }
@@ -111,7 +103,7 @@ const loadAlbum = async () => {
   fetch("/albums")
     .then(response => response.json())
     .then(album => {
-      document.getElementById("placeholder").className = "hide";
+      hidePlaceholder();
       insertResult(album);
     });
 };
