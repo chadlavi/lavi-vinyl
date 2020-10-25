@@ -2,6 +2,7 @@
   --background: linear-gradient(#faefff, #dec9e4);
   --text: #351e49;
   --button: #612c73;
+  --button-hover: #4c1f5c;
   --button-text: white;
   --padding: 1rem;
   --font: system-ui, sans-serif;
@@ -19,6 +20,7 @@
     --background: linear-gradient(#2f2532, #222);
     --text: #fcf7ff;
     --button: #4b2e4e;
+    --button-hover: #5c3460;
     --button-text: #fcf7ff;
   }
 }
@@ -48,6 +50,22 @@ main {
 
 h1 {
   font-weight: 900;
+}
+
+#result .result-album, #result .result-artist {
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.5s;
+}
+
+#result .result-album, #result .result-image-container {
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.75s;
 }
 
 .result-album {
@@ -91,6 +109,18 @@ h1 {
   width: 100%;
 }
 
+.ratings {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.ratings .stars {
+  color: gold;
+  text-shadow: 0 0 10px #22222299;
+  font-size: 1.5rem;
+}
+
 #reload-button {
   display: none;
   font-size: 1rem;
@@ -109,6 +139,10 @@ h1 {
 #reload-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--button-text) inset;
+}
+
+#reload-button:hover {
+  background: var(--button-hover);
 }
 
 #reload-button.show {
