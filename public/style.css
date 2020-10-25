@@ -81,6 +81,16 @@ h1 {
   object-fit: cover;
 }
 
+.image-box {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-box img {
+  width: 100%;
+}
+
 #reload-button {
   display: none;
   font-size: 1rem;
@@ -115,8 +125,13 @@ h1 {
 
 /* don't show the large image when screen is <= 375px wide */
 
-@media (max-width: 375px) {
+@media (max-width: 374px) {
   .lg-image {
+    display: none;
+  }
+}
+@media (min-width: 375px) {
+  .sm-image {
     display: none;
   }
 }

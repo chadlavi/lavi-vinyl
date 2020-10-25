@@ -49,6 +49,10 @@ const insertResult = album => {
   const imgContainer = document.createElement("div");
   imgContainer.className = "result-image-container";
 
+  const imageBox = document.createElement("div");
+  imageBox.className = "image-box";
+  imgContainer.append(imageBox);
+
   const imageUrl = album.fields.Image[0].url;
 
   const img = document.createElement("img");
@@ -63,9 +67,12 @@ const insertResult = album => {
     thumb.className = "result-image sm-image";
     thumb.alt = `photo of "${albumName}" by ${artistName}`;
 
-    imgContainer.appendChild(thumb);
+    img.style.background = `url(${thumbUrl})`;
+    img.style["background-size"] = "cover";
+
+    imageBox.appendChild(thumb);
   }
-  imgContainer.appendChild(img);
+  imageBox.appendChild(img);
 
   const result = document.createElement("div");
   result.id = "result";
@@ -77,7 +84,7 @@ const insertResult = album => {
   resultContainer.appendChild(result);
 };
 
-const loadAlbum = () => {
+const loadAlbum = async () => {
   showPlaceholder();
   hideReloadButton();
   fetch("/albums")
@@ -85,18 +92,18 @@ const loadAlbum = () => {
     .then(album => {
       document.getElementById("placeholder").className = "hide";
       insertResult(album);
-    })
-    .then(() => {
-      showReloadButton();
     });
 };
 
-const newAlbum = () => {
+const newAlbum = async () => {
   const reloadButton = document.getElementById("reload-button");
   const previousResult = document.getElementById("result");
   previousResult.remove();
-  loadAlbum();
-  reinsert(reloadButton);
+  loadAlbum().then(() => {
+    reinsert(reloadButton);
+  });
 };
 
-loadAlbum();
+loadAlbum().then(() => {
+  showReloadButton();
+});
