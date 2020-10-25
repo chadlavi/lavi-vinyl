@@ -5,7 +5,6 @@ const reinsert = e => {
   const parent = e.parentNode;
   e.remove();
   parent.append(n);
-  showReloadButton();
 };
 
 const hidePlaceholder = () => {
@@ -77,7 +76,7 @@ const insertResult = album => {
     const ratingsText = `rating: ${rating}/5`;
     starBox.className = "stars";
     for (let i = 0; i < rating; i++) {
-      starBox.appendChild("★");
+      starBox.append("★");
     }
     starBox["aria-label"] = ratingsText;
     starBox.title = ratingsText;
@@ -111,11 +110,18 @@ const loadAlbum = async () => {
 const newAlbum = async () => {
   const reloadButton = document.getElementById("reload-button");
   const previousResult = document.getElementById("result");
-  previousResult.remove();
+  if (previousResult) previousResult.remove();
   loadAlbum().then(() => {
     reinsert(reloadButton);
+    showReloadButton();
   });
 };
+
+document.addEventListener("keydown", e => {
+  console.log(e.code);
+  const triggers = ["Space", "KeyN", "ArrowRight"];
+  if (triggers.includes(e.code)) newAlbum();
+});
 
 loadAlbum().then(() => {
   showReloadButton();

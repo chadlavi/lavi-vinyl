@@ -17,27 +17,24 @@
   </head>
   <body>
     <main>
-      <header>
-        <h1>Let's put on...</h1>
-      </header>
-      <article>
-        <div id="placeholder">
-          <div class="result-image-container">
-            <div class="placeholder-container">
-              <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
+      <div id="placeholder">
+        <div class="result-image-container">
+          <div class="placeholder-container">
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
           </div>
         </div>
-        <div id="album"></div>
+      </div>
+      <div id="album"></div>
+      <div id="button-container">
         <button id="reload-button" onclick="newAlbum();">
-          Nah, something else
+          <span id="button-text">Next</span>
         </button>
-      </article>
+      </div>
     </main>
   </body>
 </html>

@@ -1,9 +1,9 @@
 :root {
   --background: linear-gradient(#faefff, #dec9e4);
   --text: #351e49;
-  --button: #612c73;
-  --button-hover: #4c1f5c;
-  --button-text: white;
+  --button: #d5b2e0;
+  --button-hover: #c28ed5;
+  --button-text: #351e49;
   --padding: 1rem;
   --font: system-ui, sans-serif;
 
@@ -29,22 +29,32 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background: var(--background);
   background-attachment: fixed;
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 main {
   margin: var(--padding) auto;
   width: 600px;
   max-width: calc(100% - calc(2 * var(--padding)));
-  margin-bottom: 64px;
 }
 
 @media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+  }
   main {
-    margin: 0 auto;  
-    max-width: calc(100% - calc(0.5 * var(--padding)));
+    margin: calc(var(--padding) / 4) auto;  
+    max-width: calc(100% - calc(1 * var(--padding)));
   }
 }
 
@@ -114,9 +124,14 @@ h1 {
 }
 
 .ratings .stars {
-  color: gold;
-  text-shadow: 0 0 10px #22222299;
+  color: #ffd600;
+  text-shadow: 0 0 10px #2222224a;
   font-size: 1.5rem;
+}
+
+#button-container {
+  height: 60px;
+  margin-top: calc(var(--padding) / 2);
 }
 
 #reload-button {
@@ -129,7 +144,7 @@ h1 {
   margin: 0;
   padding: var(--padding);
   width: 100%;
-  font-weight: 900;
+  font-weight: 300;
   letter-spacing: 0.3px;
   cursor: pointer;
 }
@@ -145,6 +160,16 @@ h1 {
 
 #reload-button.show {
   display: block;
+}
+
+#button-text {
+  position: relative;
+}
+
+#button-text:after {
+  content: "→";
+  position: absolute;
+  right: -24px;
 }
 
 @media (max-width: 600px) {
