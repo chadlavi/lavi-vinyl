@@ -118,7 +118,6 @@ const newAlbum = async () => {
 };
 
 document.addEventListener("keydown", e => {
-  console.log(e.code);
   const triggers = ["Space", "KeyN", "ArrowRight"];
   if (triggers.includes(e.code)) newAlbum();
 });
